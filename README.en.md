@@ -1,6 +1,6 @@
 # humanizer-uk: Ukrainian text editing for AI agents
 
-> Removes AI-writing tells from Ukrainian (uk, ua) text without changing what it says: stock AI phrases, Russianisms, Polish and English calques, bureaucratese, passive voice, chat markup and typography. Register-aware: a social post, a business email, a help page, an academic or legal text are each edited differently. Works in Claude Code, Codex, Cursor and any agent that supports skills.
+> Removes AI-writing tells from Ukrainian (uk, ua) text without changing what it says: stock AI phrases, Russianisms, Polish and English calques, bureaucratese, passive voice, chat markup and typography. Register-aware: a social post, a business email, a help page, an academic or legal text are each edited differently. Installs with one command into any agent that supports skills: Claude Code, Codex, Cursor, GitHub Copilot, Cline, Gemini CLI, Windsurf, OpenCode and 70+ more ([list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md)).
 
 > [Українська версія](README.md)
 
@@ -23,7 +23,7 @@ It edits for human readers. Getting past GPTZero, Copyleaks or any other detecto
 
 ## Install
 
-One command for any agent; the CLI finds your installed agents and asks where to put it. The base skill first, then this one:
+One command for any of 80 agents; the CLI finds the installed ones and asks where to put it. The base skill first, then this one:
 
 ```bash
 npx skills add blader/humanizer
