@@ -5,7 +5,7 @@
 > [Українська версія](README.md)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.4.0-blueviolet)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.5.0-blueviolet)](CHANGELOG.md)
 [![Stars](https://img.shields.io/github/stars/panchlab/humanizer-uk?style=social)](https://github.com/panchlab/humanizer-uk/stargazers)
 [![skills.sh](https://skills.sh/b/panchlab/humanizer-uk)](https://skills.sh/panchlab/humanizer-uk/humanizer-uk)
 
@@ -23,11 +23,7 @@ It edits for human readers. Getting past GPTZero, Copyleaks or any other detecto
 
 ## Install
 
-One command for any of 80 agents; the CLI finds the installed ones and asks where to put it. The base skill first, then this one:
-
-```bash
-npx skills add blader/humanizer
-```
+One command for any of 80 agents; the CLI finds the installed ones and asks where to put it. No other skill is required:
 
 ```bash
 npx skills add panchlab/humanizer-uk
@@ -40,7 +36,7 @@ In Claude Code you can install it as a plugin, so updates arrive through `/plugi
 /plugin install humanizer-uk@humanizer-uk
 ```
 
-Claude.ai and Claude Desktop: download both repositories as ZIP and add them as skills in settings.
+Claude.ai and Claude Desktop: download the repository as ZIP and add it as a skill in settings.
 
 ## Usage
 
@@ -51,6 +47,7 @@ Claude.ai and Claude Desktop: download both repositories as ZIP and add them as 
 
 ## What it fixes
 
+- **General AI patterns** ([§1–§26](references/patterns.md), in Ukrainian): not-X-but-Y, dramatic fragments, forced triads, dashes everywhere, inflated significance, bold as decoration, chatbot residue.
 - **AI phrasing:** «зануртеся у світ…», «не просто…, а…», «відіграє ключову роль»; in posts, newsletters and press releases also the soft marketing filler («найкращі ціни сезону», «ідеальне місце для…»).
 - **Chat markup:** bold, markdown headings, emoji and template lines are removed only where the channel cannot render them; page, help-article and post structure stays.
 - **Russianisms:** «приймати участь», «на протязі», «задача» meaning "task", active participles in -учий/-ючий.
@@ -87,4 +84,4 @@ Rules and examples are original; no dictionary entries were copied. For disputed
 
 ## License
 
-[MIT](LICENSE). The base skill [blader/humanizer](https://github.com/blader/humanizer) is MIT too, © 2025 Siqi Chen; its text is not copied here, only its pattern numbers §1–§26 are referenced. Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+[MIT](LICENSE). The general patterns §1–§26 in [references/patterns.md](references/patterns.md) were written from scratch after the ideas and numbering of [blader/humanizer](https://github.com/blader/humanizer) (MIT, © 2025 Siqi Chen); its text is not copied. Changes are listed in [CHANGELOG.md](CHANGELOG.md).

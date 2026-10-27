@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-BASE_PATTERNS = 26          # humanizer 3.1.0: §1–§26
+BASE_PATTERNS = 26          # references/patterns.md: §1–§26
 NUMBERED_SECTIONS = 11      # надбудови посилаються на розділи 1–11 за номерами
 DESCRIPTION_MAX = 1024      # Agent Skills specification
 SKILL_MAX_LINES = 500
@@ -72,7 +72,10 @@ def main() -> None:
     refs = sorted({int(n) for n in re.findall(r"§(\d+)", skill)})
     out_of_range = [n for n in refs if not 1 <= n <= BASE_PATTERNS]
     if out_of_range:
-        problems.append(f"посилання на неіснуючі патерни базового скіла: {out_of_range}")
+        problems.append(f"посилання на неіснуючі патерни references/patterns.md: {out_of_range}")
+    patterns = [int(n) for n in re.findall(r"(?m)^### (\d+)\. ", read("references/patterns.md"))]
+    if patterns != list(range(1, BASE_PATTERNS + 1)):
+        problems.append(f"references/patterns.md має містити §1–§{BASE_PATTERNS} без пропусків: {patterns}")
     numbered = [int(n) for n in re.findall(r"(?m)^## (\d+)\. ", skill)]
     if numbered != list(range(1, NUMBERED_SECTIONS + 1)):
         problems.append(f"розділи мають іти 1–{NUMBERED_SECTIONS} без пропусків: {numbered}")

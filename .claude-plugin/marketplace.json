@@ -4,7 +4,7 @@
   "owner": {
     "name": "panchlab"
   },
-  "description": "Install Humanizer UK as a Claude plugin. Install blader/humanizer as well: this skill runs on top of it.",
+  "description": "Install Humanizer UK as a Claude plugin. Self-contained: no other skill is required.",
   "plugins": [
     {
       "name": "humanizer-uk",

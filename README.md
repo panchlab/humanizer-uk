@@ -5,7 +5,7 @@
 > [English version](README.en.md)
 
 [![Ліцензія MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Версія](https://img.shields.io/badge/версія-1.4.0-blueviolet)](CHANGELOG.md)
+[![Версія](https://img.shields.io/badge/версія-1.5.0-blueviolet)](CHANGELOG.md)
 [![Зірки](https://img.shields.io/github/stars/panchlab/humanizer-uk?style=social)](https://github.com/panchlab/humanizer-uk/stargazers)
 [![skills.sh](https://skills.sh/b/panchlab/humanizer-uk)](https://skills.sh/panchlab/humanizer-uk/humanizer-uk)
 
@@ -23,11 +23,7 @@
 
 ## Встановлення
 
-Одна команда для будь-якого з 80 агентів; CLI сам знайде встановлені й спитає, куди ставити. Спершу базовий скіл, потім цей:
-
-```bash
-npx skills add blader/humanizer
-```
+Одна команда для будь-якого з 80 агентів; CLI сам знайде встановлені й спитає, куди ставити. Інших скілів не потрібно:
 
 ```bash
 npx skills add panchlab/humanizer-uk
@@ -40,7 +36,7 @@ npx skills add panchlab/humanizer-uk
 /plugin install humanizer-uk@humanizer-uk
 ```
 
-Claude.ai і Claude Desktop: завантажте обидва репозиторії як ZIP і додайте як скіли в налаштуваннях.
+Claude.ai і Claude Desktop: завантажте репозиторій як ZIP і додайте як скіл у налаштуваннях.
 
 ## Як користуватися
 
@@ -51,6 +47,7 @@ Claude.ai і Claude Desktop: завантажте обидва репозито�
 
 ## Що він виправляє
 
+- **Загальні патерни ШІ-тексту** ([§1–§26](references/patterns.md)): «не X, а Y», рубані фрагменти, нав’язані трійки, тире всюди, роздута значущість, жирний як прикраса, залишки чату.
 - **ШІ-звороти:** «зануртеся у світ…», «не просто…, а…», «відіграє ключову роль», «варто зазначити». У постах, розсилках і прес-релізах також м’які штампи: «найкращі ціни сезону», «ідеальне місце для…», «ми з радістю…».
 - **Розмітка чату:** жирний, маркдаун-заголовки, емодзі й службові рядки шаблону прибираються лише там, де канал їх не покаже; структура сайту, довідки й постів лишається.
 - **Русизми:** «приймати участь», «на протязі», «задача» в значенні «завдання», дієприкметники на -учий/-ючий.
@@ -93,4 +90,4 @@ python evals/run_evals.py
 
 ## Ліцензія
 
-[MIT](LICENSE). Базовий скіл [blader/humanizer](https://github.com/blader/humanizer) теж MIT, © 2025 Siqi Chen; його текст не скопійовано, використано лише номери патернів §1–§26. Історія змін у [CHANGELOG.md](CHANGELOG.md).
+[MIT](LICENSE). Загальні патерни §1–§26 у [references/patterns.md](references/patterns.md) написано власноруч за ідеями й нумерацією скіла [blader/humanizer](https://github.com/blader/humanizer) (MIT, © 2025 Siqi Chen); його текст не скопійовано. Історія змін у [CHANGELOG.md](CHANGELOG.md).
