@@ -5,7 +5,7 @@
 > [Українська версія](README.md)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.5.0-blueviolet)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.6.0-blueviolet)](CHANGELOG.md)
 [![Stars](https://img.shields.io/github/stars/panchlab/humanizer-uk?style=social)](https://github.com/panchlab/humanizer-uk/stargazers)
 [![skills.sh](https://skills.sh/b/panchlab/humanizer-uk)](https://skills.sh/panchlab/humanizer-uk/humanizer-uk)
 
