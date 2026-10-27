@@ -1,0 +1,6 @@
+interface:
+  display_name: "Humanizer UK"
+  short_description: "Прибирає ознаки ШІ з українського тексту й не змінює фактів"
+  default_prompt: "Use $humanizer-uk to edit this Ukrainian text so it reads like a person wrote it, without changing its facts."
+policy:
+  allow_implicit_invocation: true

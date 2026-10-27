@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "humanizer-uk",
+  "description": "Removes AI-writing tells from Ukrainian text while preserving meaning, facts and the author's voice.",
+  "version": "1.4.0",
+  "author": {
+    "name": "panchlab"
+  },
+  "license": "MIT",
+  "keywords": ["ukrainian", "writing", "editing", "humanize", "style", "typography"],
+  "skills": ["./"]
+}

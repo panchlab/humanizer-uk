@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "humanizer-uk",
+  "owner": {
+    "name": "panchlab"
+  },
+  "description": "Install Humanizer UK as a Claude plugin. Install blader/humanizer as well: this skill runs on top of it.",
+  "plugins": [
+    {
+      "name": "humanizer-uk",
+      "source": "./",
+      "description": "Removes AI-writing tells from Ukrainian text while preserving meaning, facts and the author's voice.",
+      "license": "MIT",
+      "keywords": ["ukrainian", "writing", "editing", "humanize", "style", "typography"]
+    }
+  ]
+}
