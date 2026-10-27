@@ -19,7 +19,7 @@
 
 Five edits in a business email: the vocative case, two Russianisms («приведений», «на протязі»), two bureaucratic connectors («по питанню», «в даний час») and a passive turned active. The content, the deadline and the tone are unchanged, nothing was added. Across 28 test texts the skill changed no numbers, kept emoji and bold headings where they are part of the format, and in 6 human-written samples corrected a single stray character ([details](#evaluation)).
 
-It edits for human readers. Getting past GPTZero, Copyleaks or any other detector is not a goal, is not tested and is not promised.
+It edits for people, not for detectors. GPTZero, Copyleaks and similar tools may still flag the result: the skill does not try to get past them, and we do not test for it.
 
 ## Install
 
