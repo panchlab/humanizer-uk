@@ -11,13 +11,13 @@
 
 **Before:**
 
-> Зануртеся у світ справжньої кави! Наша кав’ярня — це не просто місце, де можна випити еспресо, а справжній простір натхнення, де кожна деталь має значення. Зерно ми обсмажуємо самі щотижня.
+> Шановний пане Олег! Надсилаю вам приведений нижче перелік документів по питанню оренди. В даний час договір підписується директором, тому прошу підтвердити отримання на протязі тижня.
 
 **After:**
 
-> Варимо еспресо, а зерно щотижня обсмажуємо самі.
+> Шановний пане Олеже! Надсилаю вам наведений нижче перелік документів щодо оренди. Зараз договір підписує директор, тому прошу підтвердити отримання протягом тижня.
 
-Two facts in, two facts out, nothing invented. Across 28 test texts the skill changed no numbers, kept emoji and bold headings where they are part of the format, and in 6 human-written samples corrected a single stray character ([details](#evaluation)).
+Five edits in a business email: the vocative case, two Russianisms («приведений», «на протязі»), two bureaucratic connectors («по питанню», «в даний час») and a passive turned active. The content, the deadline and the tone are unchanged, nothing was added. Across 28 test texts the skill changed no numbers, kept emoji and bold headings where they are part of the format, and in 6 human-written samples corrected a single stray character ([details](#evaluation)).
 
 It edits for human readers. Getting past GPTZero, Copyleaks or any other detector is not a goal, is not tested and is not promised.
 
