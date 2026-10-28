@@ -22,6 +22,11 @@ MONTHS = "січня|лютого|березня|квітня|травня|че�
 EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿⭐✅❗]")
 NO_EMOJI_CHANNELS = {"email", "doc"}
 PLAIN_CHANNELS = {"email", "chat", "social"}  # маркдаун там не відображається
+NO_HEADING_CHANNELS = PLAIN_CHANNELS | {"telegram"}  # Telegram робить жирним `**`, але `#` і `---` лишає текстом
+SENTENCE_END = re.compile(r"[.!?…]+(?=\s|$)")
+SPACED_DASH = re.compile(r" (?:—|–|--|-) ")
+# Не рахуються в щільність: тире прямої мови після «», —» і тире перед числом (прайс, «частка — 12 %»).
+COUNTED_DASH = re.compile(r"(?<!»,) — (?![\d−])")
 UNIT = (r"(?:грн|zł|км|кг|хв|год|см|мм|ГБ|МБ|ТБ|день|дні|днів|тиждень|тижні|тижнів|місяць|місяці|місяців"
         rf"|рік|роки|років|р\.|{MONTHS})(?![\w’ʼ])")
 CYR = "а-щьюяєіїґА-ЩЬЮЯЄІЇҐ"
@@ -34,6 +39,11 @@ def numbers(text: str) -> list[str]:
 
 def paragraphs(text: str) -> list[str]:
     return [line for line in text.splitlines() if line.strip()]
+
+
+def sentences(text: str) -> int:
+    """Грубий лік речень: кожен непорожній рядок (заголовок, пункт) — щонайменше одне."""
+    return sum(max(1, len(SENTENCE_END.findall(p))) for p in paragraphs(text))
 
 
 def check(case: dict, out: str, banned: list[str]) -> dict[str, str | None]:
@@ -61,7 +71,8 @@ def check(case: dict, out: str, banned: list[str]) -> dict[str, str | None]:
     found = [s for s in case.get("must_not_contain", []) if s in plain]  # з урахуванням регістру
     r["must_not_contain"] = None if not found else f"лишилося: {found}"
 
-    hits = [b for b in banned if b in low]
+    # Для незмінного тексту діє сильніша перевірка unchanged, а науковий чи юридичний текст законно має «з метою».
+    hits = [] if case.get("unchanged") else [b for b in banned if b in low]
     r["no_banned"] = None if not hits else f"заборонені звороти: {hits}"
 
     bad_letters = sorted(set(re.findall(r"[ыэъёЫЭЪЁ]", out)))
@@ -83,10 +94,15 @@ def check(case: dict, out: str, banned: list[str]) -> dict[str, str | None]:
     r["apostrophe"] = None if not apostrophe_problems else ", ".join(apostrophe_problems)
 
     dash_problems = []
-    if case.get("register") != "fiction":
-        for p in paragraphs(out):
-            if p.count("—") > 1:
-                dash_problems.append(f"{p.count(chr(0x2014))} тире в абзаці «{p[:40]}…»")
+    if case.get("register") != "fiction" and case.get("author") != "human":
+        # У людському й художньому тексті правиться лише форма тире (SKILL.md, розділи 1 і 8).
+        if re.search(r"\*\*\s*— ", out):
+            dash_problems.append("тире-з’єднувач після жирної назви")
+        n, limit = len(COUNTED_DASH.findall(out)), max(1, sentences(out) / 4)
+        if n > limit:
+            dash_problems.append(f"{n} тире на {sentences(out)} речень (більше, ніж у кожному четвертому)")
+    if out.count(" — ") > len(SPACED_DASH.findall(inp)):
+        dash_problems.append("тире більше, ніж у вході")
     if re.search(r" (?:-|--|–) ", out):
         dash_problems.append("дефіс або коротке тире з пробілами на місці тире")
     r["dashes"] = None if not dash_problems else "; ".join(dash_problems)
@@ -105,8 +121,10 @@ def check(case: dict, out: str, banned: list[str]) -> dict[str, str | None]:
     markup = []
     if case.get("channel") in PLAIN_CHANNELS and "**" in out:
         markup.append(f"жирний **…** у каналі «{case.get('channel')}»")
-    if case.get("channel") in PLAIN_CHANNELS and re.search(r"(?m)^#{1,6}\s", out):
+    if case.get("channel") in NO_HEADING_CHANNELS and re.search(r"(?m)^#{1,6}\s", out):
         markup.append(f"маркдаун-заголовок у каналі «{case.get('channel')}»")
+    if case.get("channel") in NO_HEADING_CHANNELS and re.search(r"(?m)^\s*-{3,}\s*$", out):
+        markup.append(f"роздільник --- у каналі «{case.get('channel')}»")
     if case.get("channel") in NO_EMOJI_CHANNELS and EMOJI.search(out):
         markup.append(f"емодзі в каналі «{case.get('channel')}»")
     r["markup"] = None if not markup else ", ".join(markup)
